@@ -9,7 +9,7 @@ import { Student } from '../dto/student.dto';
   providedIn: 'root'
 })
 export class StudentService {
-   private APIurl:string = "http://localhost:3000/students/";
+   private APIurl:string = "https://ultatel-back-eight.vercel.app/students/";
   constructor(private httpClient: HttpClient) { }
 
   getStudentById(id:number): Observable<Student> {

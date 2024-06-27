@@ -10,10 +10,11 @@ import { RegisterUser } from '../dto/registerUser.dto';
 export class LoginService {
   public UserId:BehaviorSubject<string>=new BehaviorSubject<string>("");
   public IsLogged=false;
+  private baseUrl="https://ultatel-back-eight.vercel.app/";
     constructor(private httpClient: HttpClient) { }
 
     userLogin(user:User): Observable<Token> {
-      return this.httpClient.post<Token>("http://localhost:3000/auth/login",user)
+      return this.httpClient.post<Token>(this.baseUrl+"auth/login",user)
     }
 
     setUserId(userId:string)
@@ -22,7 +23,7 @@ export class LoginService {
     }
    
     register(username: string,email:string, password: string): Observable<any> {
-      return this.httpClient.post<any>(`http://localhost:3000/auth/register`, { username,email, password });
+      return this.httpClient.post<any>(this.baseUrl+`auth/register`, { username,email, password });
     }
   
 }
